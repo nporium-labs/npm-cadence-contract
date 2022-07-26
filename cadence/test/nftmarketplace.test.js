@@ -114,7 +114,7 @@ describe("NFT Storefront", () => {
 		const [sellItemTransactionResult] = await shallPass(createListing(Alice, itemId, toUFix64(1.11)));
 		const listingAvailableEvent = sellItemTransactionResult.events[0];
 		const listingResourceID = listingAvailableEvent.data.listingResourceID;
-        const royalty = "20";
+        const royalty = "15";
 		await shallPass(purchaseListing(Bob, listingResourceID, Alice, royalty));
 
 		const [listingCount] = await getListingCount(Alice);

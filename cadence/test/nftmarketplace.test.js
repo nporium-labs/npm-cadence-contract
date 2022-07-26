@@ -65,34 +65,6 @@ describe("NFT Storefront", () => {
 		await shallPass(createListing(Alice, itemID, toUFix64(1.11)));
 	});
 
-	it("should be able to remove a listing", async () => {
-		// Deploy contracts
-		await shallPass(deployNFTStorefront());
-
-		// Setup Alice account
-		const Alice = await getAccountAddress("Alice");
-		await shallPass(setupStorefrontOnAccount(Alice));
-
-		// Mint instruction shall pass
-		await shallPass(mintNpmItem(Alice, types.fishbowl, rarities.blue));
-
-		const itemId = 0;
-
-		await getNPMItem(Alice, itemId);
-
-		// Listing item for sale shall pass
-		const [sellItemTransactionResult] = await shallPass(createListing(Alice, itemId, toUFix64(1.11)));
-
-		const listingAvailableEvent = sellItemTransactionResult.events[0];
-		const listingResourceID = listingAvailableEvent.data.listingResourceID;
-
-		// Alice shall be able to remove item from sale
-		await shallPass(removeListing(Alice, listingResourceID));
-
-		const [listingCount] = await getListingCount(Alice);
-		expect(listingCount).toBe(0);
-	});
-
     it("should be able to accept a listing", async () => {
 		// Setup
 		await deployNFTStorefront();

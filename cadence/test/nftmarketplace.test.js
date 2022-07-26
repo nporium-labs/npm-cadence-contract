@@ -51,20 +51,6 @@ describe("NFT Storefront", () => {
 		await shallPass(setupStorefrontOnAccount(Alice));
 	});
 
-	it("should be able to create a listing", async () => {
-		// Setup
-		await deployNFTStorefront();
-		const Alice = await getAccountAddress("Alice");
-		await setupStorefrontOnAccount(Alice);
-
-		// Mint NPMItem for Alice's account
-		await shallPass(mintNpmItem(Alice, types.fishbowl, rarities.blue));
-
-		const itemID = 0;
-
-		await shallPass(createListing(Alice, itemID, toUFix64(1.11)));
-	});
-
     it("should be able to accept a listing", async () => {
 		// Setup
 		await deployNFTStorefront();

@@ -43,14 +43,6 @@ describe("NFT Storefront", () => {
 		await shallPass(deployNFTStorefront());
 	});
 
-	it("should be able to create an empty Storefront", async () => {
-		// Setup
-		await deployNFTStorefront();
-		const Alice = await getAccountAddress("Alice");
-
-		await shallPass(setupStorefrontOnAccount(Alice));
-	});
-
     it("should be able to accept a listing", async () => {
 		// Setup
 		await deployNFTStorefront();

@@ -48,14 +48,4 @@ describe("Npm Items", () => {
 		const [supply] = await shallResolve(getNpmItemSupply())
 		expect(supply).toBe(0);
 	});
-
-	it("should be able to mint a NPM item", async () => {
-		// Setup
-		await deployNpmItems();
-		const Alice = await getAccountAddress("Alice");
-		await setupNpmItemsOnAccount(Alice);
-
-		// Mint instruction for Alice account shall be resolved
-		await shallPass(mintNpmItem(Alice, types.fishbowl, rarities.blue));
-	});
 });
